@@ -15,16 +15,16 @@ class App extends Component {
     ]
   };
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName, newAge) => {
     //console.log('Was Clicked');
     // Do not use it: this.state.person[0] = "Dung";
     this.setState({
       person: [
         {
-        name: "Dung", age: 25
+        name: newName, age: newAge
         },
         {
-          name: "Dung", age: 25
+          name: "Hau", age: 27
         }
       ]
     });
@@ -34,8 +34,12 @@ class App extends Component {
     let jsx = (
       <div className="App">
         <h1>Hello Reactjs 2</h1>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
-        <Person name={this.state.person[0].name} age={this.state.person[0].age}></Person>
+        <button onClick={this.switchNameHandler.bind(this, "Dung", "18")}>Switch Name</button>
+        <Person
+          name={this.state.person[0].name} 
+          age={this.state.person[0].age}
+          click={this.switchNameHandler.bind(this, "Hấu", "26")}>
+        </Person>
         <Person name={this.state.person[1].name} age={this.state.person[1].age}>My favorite is Hau</Person>
       </div>
     );

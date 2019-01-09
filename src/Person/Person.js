@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 var person = (pros) => {
     return (
         <div>
-            <p>I'm {pros.name} and i'm {pros.age} year(s) old</p>
+            <p onClick={pros.click}>I'm {pros.name} and i'm {pros.age} year(s) old</p>
             <p>{pros.children}</p>
         </div>
     );
