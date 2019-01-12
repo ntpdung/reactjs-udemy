@@ -5,6 +5,7 @@ var person = (pros) => {
         <div>
             <p onClick={pros.click}>I'm {pros.name} and i'm {pros.age} year(s) old</p>
             <p>{pros.children}</p>
+            <input onChange={pros.changeName} value={pros.name}/>
         </div>
     );
 };
