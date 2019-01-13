@@ -47,7 +47,8 @@ class App extends Component {
     const buttonStyle = {
       padding: "10px 15px",
       backgroundColor: "#ccc",
-      borderRadius: "4px"
+      borderRadius: "4px",
+      cursor: "pointer"
     };
 
     let jsx = (
