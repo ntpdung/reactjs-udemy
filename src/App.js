@@ -5,7 +5,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-    person: [
+    persons: [
       {
         name: "Hau", age: 27
       },
@@ -17,7 +17,7 @@ class App extends Component {
   };
 
   switchNameHandler = (newName, newAge) => {
-    // Do not use it: this.state.person[0] = "Dung";
+    // Do not use it: this.state.persons[0] = "Dung";
     this.setState({
       person: [
         {
@@ -28,6 +28,12 @@ class App extends Component {
         }
       ]
     });
+  };
+
+  deletePerson = (personIndex) => {
+    let persons = this.state.persons;
+    persons.splice(personIndex, 1);
+    this.setState({persons: persons});
   };
 
   nameChangeHandler = (event) => {
@@ -69,24 +75,21 @@ class App extends Component {
               </button>
           </p>
 
-          <Person
-            name={this.state.person[0].name}
-            age={this.state.person[0].age}
-            click={this.switchNameHandler.bind(this, "Hấu", "26")}
-            changeName={this.nameChangeHandler}>
-          </Person>
-          <Person
-            name={this.state.person[1].name}
-            age={this.state.person[1].age}
-            changeName={this.nameChangeHandler}>My favorite is Hau
+          {this.state.persons.map((person, index) => {
+            return <Person
+              name={person.name}
+              age={person.age}
+              click={this.deletePerson.bind(this, index)}>
             </Person>
+          })
+          }
         </div>
       );
     };
 
     let jsx = (
       <div className="App">
-        <h1>Hello Reactjs 2</h1>
+        <h1>Hello ReactJS</h1>
         <p>
           <button
             style={buttonStyle}
