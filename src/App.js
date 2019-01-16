@@ -7,27 +7,17 @@ class App extends Component {
   state = {
     persons: [
       {
-        name: "Hau", age: 27
+        id: 1,
+        name: "Hau", 
+        age: 27
       },
       {
-        name: "Ho", age: 28
+        id: 2,
+        name: "Ho", 
+        age: 28
       }
     ],
     showPersons: false,
-  };
-
-  switchNameHandler = (newName, newAge) => {
-    // Do not use it: this.state.persons[0] = "Dung";
-    this.setState({
-      person: [
-        {
-        name: newName, age: newAge
-        },
-        {
-          name: "Ho", age: 27
-        }
-      ]
-    });
   };
 
   deletePerson = (personIndex) => {
@@ -40,20 +30,25 @@ class App extends Component {
     this.setState({persons: persons});
   };
 
-  nameChangeHandler = (event) => {
+  nameChangeHandler = (event, id) => {
+    var personIndex = this.state.persons.findIndex(person => {
+      return person.id == id;
+    });
+
+    var person = {
+      ...this.state.persons[personIndex]
+    };
+    
+    person.name = event.target.value; 
+
+    var persons = [
+      ...this.state.persons
+    ];
+
+    persons[personIndex] = person;
+    
     this.setState({
-      person: [
-        {
-          id: 1,
-          name: event.target.value, 
-          age: 28
-        },
-        {
-          id: 2,
-          name: "Ho", 
-          age: 27
-        }
-      ]
+      persons: persons
     });
   };
 
@@ -76,19 +71,14 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          <p>
-            <button
-              style={buttonStyle}
-              onClick={this.switchNameHandler.bind(this, "Dung", "18")}>Switch Name
-              </button>
-          </p>
-
-          {this.state.persons.map((person) => {
+          {this.state.persons.map((person, index) => {
             return <Person
               name={person.name}
               age={person.age}
-              click={this.deletePerson.bind(this, person.id)}
-              key={person.id}>
+              click={this.deletePerson.bind(this, index)}
+              key={person.id}
+              changeName={(event) => this.nameChangeHandler(event, person.id)}
+              >
             </Person>
           })
           }
