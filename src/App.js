@@ -31,7 +31,11 @@ class App extends Component {
   };
 
   deletePerson = (personIndex) => {
-    let persons = this.state.persons;
+    // update immutably
+    // persons.splice(personIndex, 1); bad practise -> remove element from original array
+    // let persons = this.state.persons.slice(); easy way, copy new array then remove element.
+    // using ES6 feature:
+    let persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({persons: persons});
   };
@@ -40,10 +44,14 @@ class App extends Component {
     this.setState({
       person: [
         {
-          name: event.target.value, age: 28
+          id: 1,
+          name: event.target.value, 
+          age: 28
         },
         {
-          name: "Ho", age: 27
+          id: 2,
+          name: "Ho", 
+          age: 27
         }
       ]
     });
@@ -75,11 +83,12 @@ class App extends Component {
               </button>
           </p>
 
-          {this.state.persons.map((person, index) => {
+          {this.state.persons.map((person) => {
             return <Person
               name={person.name}
               age={person.age}
-              click={this.deletePerson.bind(this, index)}>
+              click={this.deletePerson.bind(this, person.id)}
+              key={person.id}>
             </Person>
           })
           }
