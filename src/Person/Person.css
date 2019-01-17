@@ -1,19 +1,19 @@
 .person {
     position: relative;
-    width: 40%;
+    width: 300px;
     padding: 20px;
     margin: 15px auto 0;
     border: 1px solid #5d5d5d;
 }
 
-.name-input {
+.nameInput {
     width: 40%;
     height: 20px;
     border: 1px solid #5d5d5d;
     padding: 0 5px;
 }
 
-.close-icon {
+.closeIcon {
     position: absolute;
     right: 0;
     top: 0;
@@ -22,4 +22,10 @@
     height: 20px;
     background-color: #5d5d5d;
     color: #fff;
+}
+
+@media (min-width: 500px) {
+  .person {
+    width: 40%;
+  }
 }

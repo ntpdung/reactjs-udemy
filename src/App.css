@@ -1,12 +1,12 @@
-.txt-green {
+.txtGreen {
   color: green;
 }
 
-.txt-blue {
+.txtBlue {
   color: dodgerblue;
 }
 
-.txt-red {
+.txtRed {
   color: crimson;
 }
 
@@ -32,6 +32,23 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.App button {
+  padding: 10px 15px;
+  background-color: #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #000;
+  outline-width: 0;
+}
+
+.App button.red {
+  background-color: salmon;
+}
+
+.App button.red:hover {
+  opacity: 0.6;
 }
 
 @keyframes App-logo-spin {

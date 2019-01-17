@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import appStyle from './App.css';
 import Person from "./Person/Person";
 import logo from './logo.svg';
 import './App.css';
@@ -60,25 +61,17 @@ class App extends Component {
   };
 
   render() {
-    const buttonStyle = {
-      padding: "10px 15px",
-      backgroundColor: "#bb5266",
-      borderRadius: "4px",
-      cursor: "pointer",
-      color: "#fff",
-      outlineWidth: 0,
-    };
-
     let persons = null, 
-      classes = ['txt-green'];
+      classes = [appStyle.txtGreen],
+      buttonClass = '';
 
     //dynamic style
     if(this.state.persons.length < 2) {
-      classes.push('txt-blue');
+      classes.push(appStyle.txtBlue);
     }
 
     if (this.state.persons.length < 1) {
-      classes.push('txt-red')
+      classes.push(appStyle.txtRed)
     }
 
     if (this.state.showPersons) {
@@ -97,17 +90,16 @@ class App extends Component {
         </div>
       );
 
-      buttonStyle.backgroundColor = "#ccc";
-      buttonStyle.color = "#5d5d5d";
+      buttonClass = appStyle.red;
     };
 
     let jsx = (
-      <div className="App">
+      <div className={appStyle.App}>
         <h1>Hello ReactJS</h1>
         <p className={classes.join(' ')}>There are {this.state.persons.length} person(s)</p>
         <p>
           <button
-            style={buttonStyle}
+            className={buttonClass}
             onClick={this.toggleDisplayPersonName.bind(this)}>Toggle Display Name
           </button>
         </p>
