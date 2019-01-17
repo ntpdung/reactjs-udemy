@@ -62,12 +62,25 @@ class App extends Component {
   render() {
     const buttonStyle = {
       padding: "10px 15px",
-      backgroundColor: "#ccc",
+      backgroundColor: "#bb5266",
       borderRadius: "4px",
-      cursor: "pointer"
+      cursor: "pointer",
+      color: "#fff",
+      outlineWidth: 0,
     };
 
-    let persons = null;
+    let persons = null, 
+      classes = ['txt-green'];
+
+    //dynamic style
+    if(this.state.persons.length < 2) {
+      classes.push('txt-blue');
+    }
+
+    if (this.state.persons.length < 1) {
+      classes.push('txt-red')
+    }
+
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -75,7 +88,7 @@ class App extends Component {
             return <Person
               name={person.name}
               age={person.age}
-              click={this.deletePerson.bind(this, index)}
+              deletePerson={this.deletePerson.bind(this, index)}
               key={person.id}
               changeName={(event) => this.nameChangeHandler(event, person.id)}>
             </Person>
@@ -83,11 +96,15 @@ class App extends Component {
           }
         </div>
       );
+
+      buttonStyle.backgroundColor = "#ccc";
+      buttonStyle.color = "#5d5d5d";
     };
 
     let jsx = (
       <div className="App">
         <h1>Hello ReactJS</h1>
+        <p className={classes.join(' ')}>There are {this.state.persons.length} person(s)</p>
         <p>
           <button
             style={buttonStyle}

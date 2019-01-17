@@ -1,3 +1,15 @@
+.txt-green {
+  color: green;
+}
+
+.txt-blue {
+  color: dodgerblue;
+}
+
+.txt-red {
+  color: crimson;
+}
+
 .App {
   text-align: center;
 }

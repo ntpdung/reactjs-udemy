@@ -1,6 +1,25 @@
 .person {
+    position: relative;
     width: 40%;
     padding: 20px;
     margin: 15px auto 0;
-    border: 1px solid #eee;
+    border: 1px solid #5d5d5d;
+}
+
+.name-input {
+    width: 40%;
+    height: 20px;
+    border: 1px solid #5d5d5d;
+    padding: 0 5px;
+}
+
+.close-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color: #5d5d5d;
+    color: #fff;
 }
