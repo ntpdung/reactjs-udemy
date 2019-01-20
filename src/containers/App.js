@@ -54,7 +54,7 @@ class App extends Component {
     });
   };
 
-  toggleDisplayPersonName() {
+  toggleDisplayPersonName = () => {
     var doesShow = this.state.showPersons;
     this.setState({
       showPersons: !doesShow
@@ -62,37 +62,21 @@ class App extends Component {
   };
 
   render() {
-    let persons = null, 
-      classes = [appStyle.txtGreen],
-      buttonClass = '';
-
-    //dynamic style
-    if(this.state.persons.length < 2) {
-      classes.push(appStyle.txtBlue);
-    }
-
-    if (this.state.persons.length < 1) {
-      classes.push(appStyle.txtRed)
-    }
+    let persons = null
 
     if (this.state.showPersons) {
-      persons = (
-        <div>
+      persons = 
           <Persons
             persons={this.state.persons}
             changeName={this.nameChangeHandler}
-            deletePerson={this.deletePerson}/>
-        </div>
-      );
-
-      buttonClass = appStyle.red;
+            deletePerson={this.deletePerson}/>;
     };
 
     let jsx = (
       <div className={appStyle.App}>
         <Cockpit
+          showPersons={this.state.showPersons}
           persons={this.state.persons}
-          buttonClass={buttonClass} 
           toggleName={this.toggleDisplayPersonName}/>
 
         { persons }

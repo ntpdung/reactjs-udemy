@@ -1,0 +1,28 @@
+.txtGreen {
+  color: green;
+}
+
+.txtBlue {
+  color: dodgerblue;
+}
+
+.txtRed {
+  color: crimson;
+}
+
+.Cockpit button {
+  padding: 10px 15px;
+  background-color: #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #000;
+  outline-width: 0;
+}
+
+.Cockpit button.red {
+  background-color: salmon;
+}
+
+.Cockpit button.red:hover {
+  opacity: 0.6;
+}
