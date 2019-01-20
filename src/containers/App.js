@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import appStyle from './App.css';
-import Person from "../components/Persons/Person/Person";
+import Persons from "../components/Persons/Persons";
+import Cockpit from "../components/Cockpit/Cockpit";
 import logo from '../assets/images/logo.svg';
 import './App.css';
 
@@ -77,16 +78,10 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return <Person
-              name={person.name}
-              age={person.age}
-              deletePerson={this.deletePerson.bind(this, index)}
-              key={person.id}
-              changeName={(event) => this.nameChangeHandler(event, person.id)}>
-            </Person>
-          })
-          }
+          <Persons
+            persons={this.state.persons}
+            changeName={this.nameChangeHandler}
+            deletePerson={this.deletePerson}/>
         </div>
       );
 
@@ -95,14 +90,10 @@ class App extends Component {
 
     let jsx = (
       <div className={appStyle.App}>
-        <h1>Hello ReactJS</h1>
-        <p className={classes.join(' ')}>There are {this.state.persons.length} person(s)</p>
-        <p>
-          <button
-            className={buttonClass}
-            onClick={this.toggleDisplayPersonName.bind(this)}>Toggle Display Name
-          </button>
-        </p>
+        <Cockpit
+          persons={this.state.persons}
+          buttonClass={buttonClass} 
+          toggleName={this.toggleDisplayPersonName}/>
 
         { persons }
       </div>
