@@ -4,6 +4,7 @@ import cockpitStyle from '../../components/Cockpit/Cockpit.css';
 var cockpit = (props) => {
     let classes = [cockpitStyle.txtGreen],
         buttonClass = '';
+        
     if (props.showPersons) {
         buttonClass = cockpitStyle.red;
     }
@@ -18,7 +19,7 @@ var cockpit = (props) => {
 
     return (
         <div className={cockpitStyle.Cockpit}>
-            <h1>Hello ReactJS</h1>
+            <h1>{props.appTitle}</h1>
             <p className={classes.join(' ')}>There are {props.persons.length} person(s)</p>
             <p>
                 <button

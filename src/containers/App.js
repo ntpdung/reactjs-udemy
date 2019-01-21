@@ -72,9 +72,10 @@ class App extends Component {
             deletePerson={this.deletePerson}/>;
     };
 
-    let jsx = (
+    let app = (
       <div className={appStyle.App}>
         <Cockpit
+          appTitle={this.props.title}
           showPersons={this.state.showPersons}
           persons={this.state.persons}
           toggleName={this.toggleDisplayPersonName}/>
@@ -83,7 +84,7 @@ class App extends Component {
       </div>
     );
 
-    return jsx;
+    return app;
   }
 }
 
