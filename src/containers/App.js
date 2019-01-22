@@ -6,21 +6,50 @@ import logo from '../assets/images/logo.svg';
 import './App.css';
 
 class App extends Component {
-  state = {
-    persons: [
-      {
-        id: 1,
-        name: "Hau", 
-        age: 27
-      },
-      {
-        id: 2,
-        name: "Ho", 
-        age: 28
-      }
-    ],
-    showPersons: false,
+  constructor(props) {
+    super(props);
+    console.log("[App.js] Inside constructor()", props);
+
+    this.state = {
+      persons: [
+        {
+          id: 1,
+          name: "Hau",
+          age: 27
+        },
+        {
+          id: 2,
+          name: "Ho",
+          age: 28
+        }
+      ],
+      showPersons: false,
+    };
   };
+
+  componentDidMount() {
+    console.log("[App.js] Inside componentDidMount()");
+  };
+
+  componentWillMount() {
+    console.log("[App.js] Inside componentWillMount()");
+  };
+
+  // state = {
+  //   persons: [
+  //     {
+  //       id: 1,
+  //       name: "Hau", 
+  //       age: 27
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "Ho", 
+  //       age: 28
+  //     }
+  //   ],
+  //   showPersons: false,
+  // };
 
   deletePerson = (personIndex) => {
     // update immutably
@@ -62,6 +91,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("[App.js] Inside render()");
     let persons = null
 
     if (this.state.showPersons) {
